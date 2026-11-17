@@ -1,0 +1,40 @@
+openapi: 3.0.0
+
+info:
+  title: Get Address API
+  description: API contract for retrieving address
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+
+paths:
+  /address/{id}:
+    get:
+      summary: Get Address
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Address retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  city:
+                    type: string
+                  state:
+                    type: string
+
+        '404':
+          description: Address not found
